@@ -1,0 +1,139 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 36rpx;
+  border-radius: 30rpx;
+  background: linear-gradient(130deg, #72242d, #962f39);
+  color: #fff;
+}
+
+.hero-ring {
+  position: absolute;
+  top: -106rpx;
+  right: -80rpx;
+  width: 360rpx;
+  height: 360rpx;
+  border: 2rpx solid rgba(255, 255, 255, .16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 40rpx rgba(255, 255, 255, .045);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 52rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.hero-detail,
+.hero-caption {
+  color: #fae0dc;
+  font-size: 25rpx;
+}
+
+.hero-detail {
+  margin-top: 8rpx;
+}
+
+.hero-progress {
+  overflow: hidden;
+  height: 10rpx;
+  margin: 32rpx 0 12rpx;
+  border-radius: 20rpx;
+  background: rgba(255, 255, 255, .22);
+}
+
+.hero-fill {
+  height: 100%;
+  border-radius: 20rpx;
+  background: #ffd9bb;
+}
+
+.quick-actions {
+  display: flex;
+  margin-top: 22rpx;
+}
+
+.quick-action {
+  flex: 1;
+  min-width: 0;
+  padding: 24rpx 22rpx;
+  border: 2rpx solid #ece3da;
+  border-radius: 22rpx;
+  background: #fff;
+  text-align: left;
+}
+
+.quick-action + .quick-action {
+  margin-left: 18rpx;
+}
+
+.quick-action[disabled] {
+  background: #f1ede7;
+  color: #6c625d;
+}
+
+.quick-title {
+  font-size: 30rpx;
+  font-weight: 650;
+}
+
+.quick-detail,
+.lesson-count {
+  color: #71645d;
+  font-size: 24rpx;
+}
+
+.quick-detail {
+  margin-top: 4rpx;
+}
+
+.section-title {
+  margin: 39rpx 0 16rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.lesson-list {
+  overflow: hidden;
+  border: 2rpx solid #ece3da;
+  border-radius: 24rpx;
+  background: #fff;
+}
+
+.lesson {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100rpx;
+  padding: 20rpx 26rpx;
+  background: #fff;
+  text-align: left;
+}
+
+.lesson + .lesson {
+  border-top: 2rpx solid #f0e9e1;
+}
+
+.lesson-title {
+  font-weight: 600;
+}
+
+.lesson-end {
+  display: flex;
+  align-items: center;
+}
+
+.chevron {
+  width: 12rpx;
+  height: 12rpx;
+  margin: 0 6rpx 0 20rpx;
+  border-top: 3rpx solid #a18376;
+  border-right: 3rpx solid #a18376;
+  transform: rotate(45deg);
+}
+
+.card-pressed {
+  background: #f9eee8;
+}

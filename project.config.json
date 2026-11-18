@@ -1,0 +1,9 @@
+{
+  "appid": "touristappid",
+  "projectname": "exam-practice",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "miniprogram/",
+  "setting": {
+    "es6": true
+  }
+}

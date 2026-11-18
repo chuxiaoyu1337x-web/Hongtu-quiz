@@ -1,0 +1,64 @@
+<view class="page-content">
+  <block wx:if="{{phase === 'question'}}">
+    <view class="practice-header">
+      <text class="practice-title">{{title}}</text>
+      <text class="practice-count">第 {{position}} / {{total}} 题</text>
+    </view>
+    <view class="progress-track">
+      <view class="progress-value" style="width: {{percentage}}%;"></view>
+    </view>
+
+    <view class="question">
+      <text class="question-type">{{question.type === 'single' ? '单选题' : '多选题 · 请选择所有正确选项'}}</text>
+      <view class="question-stem">{{question.stem}}</view>
+    </view>
+
+    <view class="options">
+      <button
+        wx:for="{{options}}"
+        wx:key="key"
+        class="option {{item.state ? 'option-' + item.state : ''}}"
+        data-key="{{item.key}}"
+        bindtap="chooseOption"
+        disabled="{{submitted}}"
+        hover-class="option-pressed"
+      >
+        <text class="option-key">{{item.key}}</text>
+        <view class="option-content">
+          <view class="option-text">{{item.text}}</view>
+          <view wx:if="{{item.note}}" class="option-note">{{item.note}}</view>
+        </view>
+      </button>
+    </view>
+
+    <view wx:if="{{submitted}}" class="feedback {{correct ? 'feedback-correct' : 'feedback-incorrect'}}">
+      <text class="feedback-status">{{correct ? '回答正确' : '回答错误'}}</text>
+      <text>正确答案 {{answerLabel}}</text>
+    </view>
+
+    <button wx:if="{{submitted}}" class="primary-button" hover-class="button-pressed" bindtap="nextQuestion">
+      {{position === total ? '查看练习结果' : '下一题'}}
+    </button>
+    <button wx:else class="primary-button" hover-class="button-pressed" disabled="{{selected.length === 0}}" bindtap="submitAnswer">
+      提交答案
+    </button>
+  </block>
+
+  <block wx:elif="{{phase === 'result'}}">
+    <view class="summary">
+      <view class="summary-context">{{title}}</view>
+      <view class="summary-title">练习完成</view>
+      <view class="summary-score">{{correctCount}} / {{sessionCount}}</view>
+      <view class="summary-context">本次答对题数</view>
+    </view>
+    <button class="primary-button" hover-class="button-pressed" bindtap="goHome">返回题库</button>
+    <button wx:if="{{mode !== 'wrong'}}" class="secondary-button repeat" hover-class="button-pressed" bindtap="restartPractice">再练一次</button>
+  </block>
+
+  <block wx:elif="{{phase === 'empty'}}">
+    <view class="summary">
+      <view class="summary-title">{{mode === 'wrong' ? '暂无错题' : '暂无可练习的题目'}}</view>
+    </view>
+    <button class="primary-button" hover-class="button-pressed" bindtap="goHome">返回题库</button>
+  </block>
+</view>

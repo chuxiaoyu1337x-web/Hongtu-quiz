@@ -1,0 +1,41 @@
+<view class="page-content">
+  <view class="hero">
+    <view class="hero-ring"></view>
+    <view class="hero-title">题库练习</view>
+    <view class="hero-detail">{{lessons.length}} 课 · {{questionCount}} 题 · 单选与多选</view>
+    <view class="hero-progress">
+      <view class="hero-fill" style="width: {{percentage}}%;"></view>
+    </view>
+    <view class="hero-caption">已练 {{practiced}} / {{questionCount}} 题</view>
+  </view>
+
+  <view class="quick-actions">
+    <button class="quick-action" data-mode="mixed" bindtap="openPractice" hover-class="card-pressed">
+      <view class="quick-title">随机练习</view>
+      <view class="quick-detail">从全题库抽取 {{mixedCount}} 题</view>
+    </button>
+    <button class="quick-action" data-mode="wrong" bindtap="openPractice" disabled="{{wrongCount === 0}}" hover-class="card-pressed">
+      <view class="quick-title">错题重练</view>
+      <view class="quick-detail">{{wrongCount ? wrongCount + ' 道题待订正' : '暂无错题'}}</view>
+    </button>
+  </view>
+
+  <view class="section-title">按课练习</view>
+  <view class="lesson-list">
+    <button
+      wx:for="{{lessons}}"
+      wx:key="id"
+      class="lesson"
+      data-mode="lesson"
+      data-lesson-id="{{item.id}}"
+      bindtap="openPractice"
+      hover-class="card-pressed"
+    >
+      <text class="lesson-title">{{item.label}}</text>
+      <view class="lesson-end">
+        <text class="lesson-count">已练 {{item.practiced}} / {{item.total}}</text>
+        <view class="chevron"></view>
+      </view>
+    </button>
+  </view>
+</view>
